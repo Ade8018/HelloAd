@@ -28,7 +28,7 @@ public class Base {
 		b.uuid = Utils.getRandomIMEI();
 		b.ua = Utils.getRandomUA();
 		b.os = Utils.getRandomOSVersion();
-		b.packageName = Utils.getRandomPackageName();
+		b.packageName = Utils.getRandomPackageNameFix();
 		b.imsi = Utils.getRandomIMSI();
 		b.carrier = Utils.getCarrierByIMSI(b.imsi);
 		b.mac = Utils.getRandomMAC();
@@ -37,9 +37,18 @@ public class Base {
 
 	@Override
 	public String toString() {
-		return "appId=" + (appId == null ? "" : appId) + "&uuid=" + (uuid == null ? "" : uuid) + "&ua=" + (ua == null ? "" : ua) + "&os=" + (os == null ? "" : os) + "&safe="
-				+ (safe == null ? "" : safe) + "&versionCode=" + (versionCode == null ? "" : versionCode) + "&packageName=" + (packageName == null ? "" : packageName) + "&sdkVersion="
-				+ (sdkVersion == null ? "" : sdkVersion) + "&province=" + (province == null ? "" : province) + "&carrier=" + (carrier == null ? "" : carrier) + "&imsi=" + (imsi == null ? "" : imsi)
-				+ "&mac=" + (mac == null ? "" : mac) + "&adId=" + (adId == null ? "" : adId) + "&adType=" + (adType == null ? "" : adType);
+		return "appId=" + (appId == null ? "" : appId) + "&uuid="
+				+ (uuid == null ? "" : uuid) + "&ua=" + (ua == null ? "" : ua)
+				+ "&os=" + (os == null ? "" : os) + "&safe="
+				+ (safe == null ? "" : safe) + "&versionCode="
+				+ (versionCode == null ? "" : versionCode) + "&packageName="
+				+ (packageName == null ? "" : packageName) + "&sdkVersion="
+				+ (sdkVersion == null ? "" : sdkVersion) + "&province="
+				+ (province == null ? "" : province) + "&carrier="
+				+ (carrier == null ? "" : carrier) + "&imsi="
+				+ (imsi == null ? "" : imsi) + "&mac="
+				+ (mac == null ? "" : mac) + "&adId="
+				+ (adId == null ? "" : adId) + "&adType="
+				+ (adType == null ? "" : adType);
 	}
 }
