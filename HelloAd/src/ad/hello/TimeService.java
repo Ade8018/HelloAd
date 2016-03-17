@@ -1,5 +1,7 @@
 package ad.hello;
 
+import java.util.Set;
+
 import test.ad.Main;
 import test.ad.util.Utils;
 import android.app.Service;
@@ -52,8 +54,10 @@ public class TimeService extends Service {
 					int min = SpHelper.getMinute();
 					SpHelper.incMinute();
 					if (min % 5 == 0) {
-						MainActivity.setMobileDataEnabled(TimeService.this, false);
-						MainActivity.setMobileDataEnabled(TimeService.this, true);
+						MainActivity.setMobileDataEnabled(TimeService.this,
+								false);
+						MainActivity.setMobileDataEnabled(TimeService.this,
+								true);
 						String ip = getIp();
 						Log.e("lkt", "获取到ip:" + ip);
 						SpHelper.saveIp(ip);
@@ -69,8 +73,12 @@ public class TimeService extends Service {
 		private String getIp() {
 			String ip = null;
 			while (ip == null) {
+				Set<String> ips = SpHelper.getIps();
 				Utils.sleep(5, 5);
 				ip = Helper.GetNetIp();
+				if (ips != null && ips.contains(ips)) {
+					ip = null;
+				}
 			}
 			return ip;
 		}
