@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -92,27 +93,38 @@ public class MainActivity extends Activity implements OnClickListener {
 		}).start();
 	}
 
-	public static void setMobileDataEnabled(Context context, boolean enabled) {// 开和关
-		try {
-			final ConnectivityManager conman = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-			final Class conmanClass = Class.forName(conman.getClass().getName());
-			final Field connectivityManagerField = conmanClass.getDeclaredField("mService");
-			connectivityManagerField.setAccessible(true);
-			final Object connectivityManager = connectivityManagerField.get(conman);
-			final Class connectivityManagerClass = Class.forName(connectivityManager.getClass().getName());
-			final Method setMobileDataEnabledMethod = connectivityManagerClass.getDeclaredMethod("setMobileDataEnabled", Boolean.TYPE);
-			setMobileDataEnabledMethod.setAccessible(true);
-			setMobileDataEnabledMethod.invoke(connectivityManager, enabled);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
+	public static void setWifi(Context context, boolean b) {
+		WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		wm.setWifiEnabled(b);
 	}
+
+	// public static void setMobileDataEnabled(Context context, boolean enabled)
+	// {// 开和关
+	// try {
+	// final ConnectivityManager conman = (ConnectivityManager)
+	// context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	// final Class conmanClass = Class.forName(conman.getClass().getName());
+	// final Field connectivityManagerField =
+	// conmanClass.getDeclaredField("mService");
+	// connectivityManagerField.setAccessible(true);
+	// final Object connectivityManager = connectivityManagerField.get(conman);
+	// final Class connectivityManagerClass =
+	// Class.forName(connectivityManager.getClass().getName());
+	// final Method setMobileDataEnabledMethod =
+	// connectivityManagerClass.getDeclaredMethod("setMobileDataEnabled",
+	// Boolean.TYPE);
+	// setMobileDataEnabledMethod.setAccessible(true);
+	// setMobileDataEnabledMethod.invoke(connectivityManager, enabled);
+	// } catch (ClassNotFoundException e) {
+	// e.printStackTrace();
+	// } catch (NoSuchFieldException e) {
+	// e.printStackTrace();
+	// } catch (IllegalAccessException e) {
+	// e.printStackTrace();
+	// } catch (NoSuchMethodException e) {
+	// e.printStackTrace();
+	// } catch (InvocationTargetException e) {
+	// e.printStackTrace();
+	// }
+	// }
 }

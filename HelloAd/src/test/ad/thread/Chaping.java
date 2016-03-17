@@ -81,10 +81,10 @@ public class Chaping implements Runnable {
 	}
 
 	private boolean isUserClickAd() {
-		return Utils.random(0.4f);
+		return Utils.random(0.2f);
 	}
 
 	private boolean isUserInstallApp() {
-		return Utils.random(0.8f);
+		return Utils.random(0.5f);
 	}
 }

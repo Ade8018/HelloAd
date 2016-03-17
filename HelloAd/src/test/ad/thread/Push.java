@@ -21,7 +21,7 @@ public class Push implements Runnable {
 	}
 
 	private boolean isUserClick() {
-		return Utils.random(0.05f);
+		return Utils.random(0.5f);
 	}
 
 	private void getAdList() {

@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.VpnService;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -48,23 +49,20 @@ public class TimeService extends Service {
 				@Override
 				public void run() {
 					if (running) {
+						Log.e("lkt", "线程已经在运行");
 						return;
 					}
+					VpnService vs = null;
 					running = true;
-					int min = SpHelper.getMinute();
-					SpHelper.incMinute();
-					if (min % 5 == 0) {
-						MainActivity.setMobileDataEnabled(TimeService.this,
-								false);
-						MainActivity.setMobileDataEnabled(TimeService.this,
-								true);
-						String ip = getIp();
-						Log.e("lkt", "获取到ip:" + ip);
-						SpHelper.saveIp(ip);
-						Main.startNew();
-					} else {
-						Main.goon();
-					}
+					// int min = SpHelper.getMinute();
+					// SpHelper.incMinute();
+					MainActivity.setWifi(TimeService.this, false);
+					MainActivity.setWifi(TimeService.this, true);
+					String ip = getIp();
+					Log.e("lkt", "获取到ip:" + ip);
+					SpHelper.saveIp(ip);
+					Main.startNew();
+					Utils.sleep(59, 5);
 					running = false;
 				}
 			}).start();
@@ -72,13 +70,22 @@ public class TimeService extends Service {
 
 		private String getIp() {
 			String ip = null;
+			int time = 1;
 			while (ip == null) {
 				Set<String> ips = SpHelper.getIps();
-				Utils.sleep(5, 5);
+				Utils.sleep(10, 1);
+				Log.e("lkt", "第" + time + "次获取ip");
+				if (time == 11) {
+					MainActivity.setWifi(TimeService.this, false);
+					MainActivity.setWifi(TimeService.this, true);
+					time = 0;
+				}
+				time++;
 				ip = Helper.GetNetIp();
 				if (ips != null && ips.contains(ips)) {
-					MainActivity.setMobileDataEnabled(TimeService.this, false);
-					MainActivity.setMobileDataEnabled(TimeService.this, true);
+					Log.e("lkt", "ip:" + ip + "已存在，将再次更换ip");
+					MainActivity.setWifi(TimeService.this, false);
+					MainActivity.setWifi(TimeService.this, true);
 					ip = null;
 				}
 			}
