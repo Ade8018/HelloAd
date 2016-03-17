@@ -77,6 +77,8 @@ public class TimeService extends Service {
 				Utils.sleep(5, 5);
 				ip = Helper.GetNetIp();
 				if (ips != null && ips.contains(ips)) {
+					MainActivity.setMobileDataEnabled(TimeService.this, false);
+					MainActivity.setMobileDataEnabled(TimeService.this, true);
 					ip = null;
 				}
 			}
