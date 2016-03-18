@@ -94,15 +94,6 @@ public class Helper {
 		return null;
 	}
 
-	public static Class getVpnProfileClass() {
-		try {
-			return Class.forName("com.android.internal.net.VpnProfile");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public static void connect(Context context, Object profile) {
 		ConnectivityManager cm = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
