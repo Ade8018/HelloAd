@@ -125,6 +125,9 @@ public class Utils {
 	}
 
 	public static String[] getAdIds(String resp) {
+		if (resp == null) {
+			return null;
+		}
 		int len = "\"adId\":\"".length();
 		int index = resp.indexOf("\"adId\":\"");
 		List<String> ids = new ArrayList<String>();
@@ -138,6 +141,9 @@ public class Utils {
 	}
 
 	public static String getProvince(String resp) {
+		if (resp == null) {
+			return null;
+		}
 		String anchor = "\"province\":\"";
 		int len = anchor.length();
 		int index = resp.indexOf(anchor);

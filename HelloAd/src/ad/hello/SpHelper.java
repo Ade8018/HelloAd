@@ -9,13 +9,13 @@ import android.util.Log;
 
 public class SpHelper {
 
-	public static Set<String> getIps(Context context) {
+	public synchronized static Set<String> getIps(Context context) {
 		SharedPreferences sp = context.getSharedPreferences("hello",
 				Context.MODE_PRIVATE);
 		return sp.getStringSet("ips", null);
 	}
 
-	public static void saveIp(Context context, String ip) {
+	public synchronized static void saveIp(Context context, String ip) {
 		SharedPreferences sp = context.getSharedPreferences("hello",
 				Context.MODE_PRIVATE);
 		Set<String> s = sp.getStringSet("ips", null);
@@ -23,7 +23,8 @@ public class SpHelper {
 			s = new HashSet<String>();
 		}
 		s.add(ip);
-		Log.e("lkt", "commit result:"
+		Log.e("lkt", "remove ips result:" + sp.edit().remove("ips").commit());
+		Log.e("lkt", "commit ips result:"
 				+ sp.edit().putStringSet("ips", s).commit());
 	}
 }
