@@ -34,7 +34,8 @@ public class Chaping implements Runnable {
 			L.log("can't download chapingAD because of empty adId");
 			return;
 		}
-		Action a = new Action(AdData.getCurrent().base, "chaping", "download", AdData.getCurrent().ChapingAdId);
+		Action a = new Action(AdData.getCurrent().base, "chaping", "download",
+				AdData.getCurrent().ChapingAdId);
 		L.log(Http.post(a));
 	}
 
@@ -43,7 +44,8 @@ public class Chaping implements Runnable {
 			L.log("can't install chapingAD because of empty adId");
 			return;
 		}
-		Action a = new Action(AdData.getCurrent().base, "chaping", "install", AdData.getCurrent().ChapingAdId);
+		Action a = new Action(AdData.getCurrent().base, "chaping", "install",
+				AdData.getCurrent().ChapingAdId);
 		L.log(Http.post(a));
 	}
 
@@ -52,7 +54,8 @@ public class Chaping implements Runnable {
 			L.log("can't start chapingAD because of empty adId");
 			return;
 		}
-		Action a = new Action(AdData.getCurrent().base, "chaping", "start", AdData.getCurrent().ChapingAdId);
+		Action a = new Action(AdData.getCurrent().base, "chaping", "start",
+				AdData.getCurrent().ChapingAdId);
 		L.log(Http.post(a));
 	}
 
@@ -60,7 +63,9 @@ public class Chaping implements Runnable {
 	 * 如果已经点击了某个Ad，则要将该adId填入参数
 	 */
 	private void getAdList() {
-		Request r = new Request(AdData.getCurrent().base, AdData.getCurrent().ChapingAdId, "chaping", AdData.getCurrent().ChapingAdId == null ? "3" : "2");
+		Request r = new Request(AdData.getCurrent().base,
+				AdData.getCurrent().ChapingAdId, "chaping",
+				AdData.getCurrent().ChapingAdId == null ? "3" : "2");
 		String resp = Http.post(r);
 		getAdId(resp);
 		getProvince(resp);
@@ -76,7 +81,8 @@ public class Chaping implements Runnable {
 	private void getAdId(String resp) {
 		String adIds[] = Utils.getAdIds(resp);
 		if (adIds != null && adIds.length > 0) {
-			AdData.getCurrent().ChapingAdId = adIds[Utils.sRandom.nextInt(adIds.length)];
+			AdData.getCurrent().ChapingAdId = adIds[Utils.sRandom
+					.nextInt(adIds.length)];
 		}
 	}
 
@@ -85,6 +91,6 @@ public class Chaping implements Runnable {
 	}
 
 	private boolean isUserInstallApp() {
-		return Utils.random(0.5f);
+		return Utils.random(0.4f);
 	}
 }

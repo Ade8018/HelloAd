@@ -33,9 +33,13 @@ public class Main {
 				first = false;
 				ExecutorUtil.post(new Chaping());
 			} else {
-				ExecutorUtil.post(getRandomRun());
+				Runnable r = getRandomRun();
+				if (r != null) {
+					ExecutorUtil.post(r);
+				}
 			}
-			if (AdData.getCurrent().activeCount >= 3 || AdData.getCurrent().pushCount >= 30) {
+			if (AdData.getCurrent().activeCount >= 3
+					|| AdData.getCurrent().pushCount >= 30) {
 				break;
 			}
 			Utils.sleep(2, 8);
@@ -44,13 +48,15 @@ public class Main {
 
 	public static Runnable getRandomRun() {
 		float f = Utils.sRandom.nextFloat();
-		if (f < 0.1f) {
+		if (f < 0.05f) {
 			return new Chaping();
-		} else if (f >= 0.1f && f < 0.3f) {
+		} else if (f >= 0.05f && f < 0.15f) {
 			return new Push();
-		} else if (f >= 0.3f && f < 0.6f) {
+		} else if (f >= 0.15f && f < 0.25f) {
 			return new Desktop();
+		} else if (f >= 0.25f && f < 0.35f) {
+			return new NewDesktop();
 		}
-		return new NewDesktop();
+		return null;
 	}
 }

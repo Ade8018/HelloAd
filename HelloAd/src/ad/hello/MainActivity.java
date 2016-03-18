@@ -32,13 +32,12 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		SpHelper.init(this);
 		setContentView(R.layout.activity_main);
 		findViewById(R.id.btn_on).setOnClickListener(this);
 		findViewById(R.id.btn_off).setOnClickListener(this);
 		tvIp = (TextView) findViewById(R.id.tv_ip);
 
-		Set<String> ips = SpHelper.getIps();
+		Set<String> ips = SpHelper.getIps(this);
 		if (ips != null) {
 			Iterator<String> it = ips.iterator();
 			String result = "";
@@ -92,11 +91,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 		}).start();
 	}
-
-	public static void setWifi(Context context, boolean b) {
-		WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-		wm.setWifiEnabled(b);
-	}
+	//
+	// public static void setWifi(Context context, boolean b) {
+	// WifiManager wm = (WifiManager)
+	// context.getSystemService(Context.WIFI_SERVICE);
+	// wm.setWifiEnabled(b);
+	// }
 
 	// public static void setMobileDataEnabled(Context context, boolean enabled)
 	// {// 开和关
