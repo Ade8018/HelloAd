@@ -52,12 +52,8 @@ public class TimeService extends Service {
 						Log.e("lkt", "线程已经在运行");
 						return;
 					}
-					VpnService vs = null;
 					running = true;
-					// int min = SpHelper.getMinute();
-					// SpHelper.incMinute();
-					MainActivity.setWifi(TimeService.this, false);
-					MainActivity.setWifi(TimeService.this, true);
+					Helper.resetVpn(getApplicationContext());
 					String ip = getIp();
 					Log.e("lkt", "获取到ip:" + ip);
 					SpHelper.saveIp(ip);
@@ -73,19 +69,17 @@ public class TimeService extends Service {
 			int time = 1;
 			while (ip == null) {
 				Set<String> ips = SpHelper.getIps();
-				Utils.sleep(10, 1);
+				Utils.sleep(5, 1);
 				Log.e("lkt", "第" + time + "次获取ip");
-				if (time == 11) {
-					MainActivity.setWifi(TimeService.this, false);
-					MainActivity.setWifi(TimeService.this, true);
+				if (time == 2) {
+					Helper.resetVpn(getApplicationContext());
 					time = 0;
 				}
 				time++;
 				ip = Helper.GetNetIp();
 				if (ips != null && ips.contains(ips)) {
 					Log.e("lkt", "ip:" + ip + "已存在，将再次更换ip");
-					MainActivity.setWifi(TimeService.this, false);
-					MainActivity.setWifi(TimeService.this, true);
+					Helper.resetVpn(getApplicationContext());
 					ip = null;
 				}
 			}

@@ -92,11 +92,11 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 		}).start();
 	}
-
-	public static void setWifi(Context context, boolean b) {
-		WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-		wm.setWifiEnabled(b);
-	}
+//
+//	public static void setWifi(Context context, boolean b) {
+//		WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+//		wm.setWifiEnabled(b);
+//	}
 
 	// public static void setMobileDataEnabled(Context context, boolean enabled)
 	// {// 开和关
