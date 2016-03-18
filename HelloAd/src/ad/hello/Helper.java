@@ -11,9 +11,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import test.ad.util.Utils;
-
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 
 public class Helper {
@@ -24,6 +23,8 @@ public class Helper {
 			infoUrl = new URL("http://1212.ip138.com/ic.asp");
 			URLConnection connection = infoUrl.openConnection();
 			HttpURLConnection httpConnection = (HttpURLConnection) connection;
+			httpConnection.setConnectTimeout(2000);
+			httpConnection.setReadTimeout(2000);
 			int responseCode = httpConnection.getResponseCode();
 			if (responseCode == HttpURLConnection.HTTP_OK) {
 				inStream = httpConnection.getInputStream();
@@ -49,10 +50,12 @@ public class Helper {
 	}
 
 	public static void resetVpn(Context context) {
-		disconnect(context);
-		Utils.sleep(0, 1);
-		Object profile = getVpnProfile();
-		connect(context, profile);
+		Intent intent = new Intent("reset_vpn");
+		context.sendBroadcast(intent);
+		// disconnect(context);
+		// Utils.sleep(0, 1);
+		// Object profile = getVpnProfile();
+		// connect(context, profile);
 	}
 
 	public static Object getVpnProfile() {

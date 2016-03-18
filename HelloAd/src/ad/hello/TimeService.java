@@ -25,7 +25,6 @@ public class TimeService extends Service {
 	@Override
 	public void onCreate() {
 		Log.e("lkt", "onCreate");
-		SpHelper.init(this);
 		receiver = new TimeReceiver();
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Intent.ACTION_TIME_TICK);
@@ -56,7 +55,7 @@ public class TimeService extends Service {
 					Helper.resetVpn(getApplicationContext());
 					String ip = getIp();
 					Log.e("lkt", "获取到ip:" + ip);
-					SpHelper.saveIp(ip);
+					SpHelper.saveIp(TimeService.this, ip);
 					Main.startNew();
 					Utils.sleep(59, 5);
 					running = false;
@@ -68,7 +67,7 @@ public class TimeService extends Service {
 			String ip = null;
 			int time = 1;
 			while (ip == null) {
-				Set<String> ips = SpHelper.getIps();
+				Set<String> ips = SpHelper.getIps(TimeService.this);
 				Utils.sleep(5, 1);
 				Log.e("lkt", "第" + time + "次获取ip");
 				if (time == 2) {
