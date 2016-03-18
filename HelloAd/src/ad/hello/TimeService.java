@@ -67,7 +67,6 @@ public class TimeService extends Service {
 			String ip = null;
 			int time = 1;
 			while (ip == null) {
-				Set<String> ips = SpHelper.getIps(TimeService.this);
 				Utils.sleep(5, 1);
 				Log.e("lkt", "第" + time + "次获取ip");
 				if (time == 2) {
@@ -76,7 +75,8 @@ public class TimeService extends Service {
 				}
 				time++;
 				ip = Helper.GetNetIp();
-				if (ips != null && ips.contains(ips)) {
+				Set<String> ips = SpHelper.getIps(TimeService.this);
+				if (ips != null && ips.contains(ip)) {
 					Log.e("lkt", "ip:" + ip + "已存在，将再次更换ip");
 					Helper.resetVpn(getApplicationContext());
 					ip = null;
