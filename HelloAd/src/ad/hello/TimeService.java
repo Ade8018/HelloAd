@@ -67,7 +67,7 @@ public class TimeService extends Service {
 			String ip = null;
 			int time = 1;
 			while (ip == null) {
-				Utils.sleep(5, 1);
+				Utils.sleep(10, 1);
 				Log.e("lkt", "第" + time + "次获取ip");
 				if (time == 2) {
 					Helper.resetVpn(getApplicationContext());
