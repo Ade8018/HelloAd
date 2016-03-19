@@ -68,17 +68,19 @@ public class TimeService extends Service {
 			int time = 1;
 			while (ip == null) {
 				Utils.sleep(10, 1);
-				Log.e("lkt", "第" + time + "次获取ip");
-				if (time == 2) {
+				if (time == 3) {
 					Helper.resetVpn(getApplicationContext());
 					time = 0;
 				}
 				time++;
+				Log.e("lkt", "第" + time + "次获取ip");
 				ip = Helper.GetNetIp();
+				if (ip == null) {
+					continue;
+				}
 				Set<String> ips = SpHelper.getIps(TimeService.this);
 				if (ips != null && ips.contains(ip)) {
 					Log.e("lkt", "ip:" + ip + "已存在，将再次更换ip");
-					Helper.resetVpn(getApplicationContext());
 					ip = null;
 				}
 			}
