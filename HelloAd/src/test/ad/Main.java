@@ -50,11 +50,11 @@ public class Main {
 		float f = Utils.sRandom.nextFloat();
 		if (f < 0.05f) {
 			return new Chaping();
-		} else if (f >= 0.05f && f < 0.15f) {
+		} else if (f >= 0.05f && f < 0.10f) {
 			return new Push();
-		} else if (f >= 0.15f && f < 0.25f) {
+		} else if (f >= 0.10f && f < 0.15f) {
 			return new Desktop();
-		} else if (f >= 0.25f && f < 0.35f) {
+		} else if (f >= 0.15f && f < 0.20f) {
 			return new NewDesktop();
 		}
 		return null;
