@@ -118,7 +118,9 @@ public class Utils {
 			"samsung@SM-N9008S", "OPPO@R8207", "Flyme@MX3", "Flyme@MX4",
 			"Hisense@M20-T", "OPPO@R7", "Lenovo@A590", "HUAWEI@ALE-CL00",
 			"HUAWEI@GRA-TL00", "Coolpad@8675", "Lenovo@A680", "Lenovo@A7600-m",
-			"Lenovo@A808t", "vivo@X5L", "ZTE@G719C" };
+			"Lenovo@A808t", "vivo@X5L", "ZTE@G719C", "HUAWEI@MT7-TL00",
+			"HUAWEI@MT7-TL10", "HUAWEI@GRA-CL00", "HUAWEI@ALE-CL00",
+			"Letv@X500", "vivo@Y18L" };
 
 	public static String getRandomUA() {
 		return uas[sRandom.nextInt(uas.length)];
