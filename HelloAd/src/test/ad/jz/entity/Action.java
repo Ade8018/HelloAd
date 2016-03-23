@@ -1,4 +1,4 @@
-package test.ad.entity;
+package test.ad.jz.entity;
 
 public class Action extends Base {
 	String action;

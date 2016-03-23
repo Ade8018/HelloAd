@@ -1,13 +1,13 @@
-package test.ad.util;
+package test.ad.jz.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import test.ad.entity.Action;
-import test.ad.entity.Request;
-import test.ad.log.L;
+import test.ad.jz.entity.Action;
+import test.ad.jz.entity.Request;
+import test.ad.jz.log.L;
 
 public class Http {
 	private static String postInfo(String param, String method) {

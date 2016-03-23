@@ -1,4 +1,4 @@
-package test.ad.util;
+package test.ad.jz.util;
 
 import java.util.LinkedList;
 import java.util.concurrent.ArrayBlockingQueue;

@@ -1,6 +1,6 @@
-package test.ad.data;
+package test.ad.jz.data;
 
-import test.ad.entity.Base;
+import test.ad.jz.entity.Base;
 
 public class AdData {
 	private static AdData sInstance;

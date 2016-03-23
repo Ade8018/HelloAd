@@ -1,14 +1,14 @@
-package test.ad;
+package test.ad.jz;
 
 import android.util.Log;
-import test.ad.data.AdData;
-import test.ad.entity.Base;
-import test.ad.thread.Chaping;
-import test.ad.thread.Desktop;
-import test.ad.thread.NewDesktop;
-import test.ad.thread.Push;
-import test.ad.util.ExecutorUtil;
-import test.ad.util.Utils;
+import test.ad.jz.data.AdData;
+import test.ad.jz.entity.Base;
+import test.ad.jz.thread.Chaping;
+import test.ad.jz.thread.Desktop;
+import test.ad.jz.thread.NewDesktop;
+import test.ad.jz.thread.Push;
+import test.ad.jz.util.ExecutorUtil;
+import test.ad.jz.util.Utils;
 
 public class Main {
 

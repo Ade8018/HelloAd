@@ -1,4 +1,4 @@
-package test.ad.log;
+package test.ad.jz.log;
 
 import android.util.Log;
 

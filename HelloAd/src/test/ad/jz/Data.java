@@ -1,9 +1,9 @@
-package test.ad;
+package test.ad.jz;
 
-import test.ad.entity.Base;
-import test.ad.entity.Request;
-import test.ad.util.Base64;
-import test.ad.util.Http;
+import test.ad.jz.entity.Base;
+import test.ad.jz.entity.Request;
+import test.ad.jz.util.Base64;
+import test.ad.jz.util.Http;
 
 public class Data {
 	public static String[] datas = new String[] {

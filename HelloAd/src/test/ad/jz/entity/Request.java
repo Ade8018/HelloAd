@@ -1,6 +1,6 @@
-package test.ad.entity;
+package test.ad.jz.entity;
 
-import test.ad.util.Utils;
+import test.ad.jz.util.Utils;
 
 public class Request extends Base {
 	String sendCount;// 请求的广告数量

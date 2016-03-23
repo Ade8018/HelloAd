@@ -1,11 +1,11 @@
-package test.ad.thread;
+package test.ad.jz.thread;
 
-import test.ad.data.AdData;
-import test.ad.entity.Action;
-import test.ad.entity.Request;
-import test.ad.log.L;
-import test.ad.util.Http;
-import test.ad.util.Utils;
+import test.ad.jz.data.AdData;
+import test.ad.jz.entity.Action;
+import test.ad.jz.entity.Request;
+import test.ad.jz.log.L;
+import test.ad.jz.util.Http;
+import test.ad.jz.util.Utils;
 
 public class Chaping implements Runnable {
 	@Override

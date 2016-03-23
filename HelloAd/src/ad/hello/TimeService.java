@@ -2,8 +2,8 @@ package ad.hello;
 
 import java.util.Set;
 
-import test.ad.Main;
-import test.ad.util.Utils;
+import test.ad.jz.Main;
+import test.ad.jz.util.Utils;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;

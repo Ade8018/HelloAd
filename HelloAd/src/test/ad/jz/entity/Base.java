@@ -1,6 +1,6 @@
-package test.ad.entity;
+package test.ad.jz.entity;
 
-import test.ad.util.Utils;
+import test.ad.jz.util.Utils;
 
 public class Base {
 	public static final String SDK_VERSION = "2.6.4";
