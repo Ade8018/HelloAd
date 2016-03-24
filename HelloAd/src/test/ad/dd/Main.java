@@ -2,9 +2,7 @@ package test.ad.dd;
 
 import java.lang.reflect.Field;
 
-import cs.entity.AdStatus;
 import cs.network.configs.Config;
-import cs.request.AddOneAppReportRequest;
 
 public class Main {
 	public static void main(String[] args) {
@@ -12,11 +10,10 @@ public class Main {
 		setAppPackageName();
 		setClientUUID();
 		setImsi();
-		// AddOneAppReportRequest a = new AddOneAppReportRequest(
-		// getApplicationContext(), AdStatus.点击, 1095,
-		// "aca1f174879e4cd88ed57e302139c9c4", null);
-		// Log.e("lkt", a.getParrams().get("s").toString());
-		// tv.setText(getIMEI() + "\n" + getImsi() + "\n" + getMac());
+	}
+
+	public static void start() {
+		
 	}
 
 	private static String getIMEI() {// calculator IMEI
