@@ -2,7 +2,7 @@ package ad.hello;
 
 import java.util.Set;
 
-import test.ad.jz.Main;
+import test.ad.dd.Main;
 import test.ad.jz.util.Utils;
 
 import android.app.Service;
@@ -56,7 +56,8 @@ public class TimeService extends Service {
 					String ip = getIp();
 					Log.e("lkt", "获取到ip:" + ip);
 					SpHelper.saveIp(TimeService.this, ip);
-					Main.startNew();
+					// Main.startNew();
+					Main.start(getApplicationContext());
 					Utils.sleep(59, 5);
 					running = false;
 				}

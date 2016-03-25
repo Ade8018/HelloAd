@@ -25,7 +25,7 @@ public class DDWebRequest {
 	 * @param params
 	 *            请求参数，格式如clientUUID=507835236185671&time=1458725226152 ...
 	 */
-	public static void request(Context context, String url, String userAgent,
+	public static String request(Context context, String url, String userAgent,
 			String params) {
 		Log.e("lkt", "request start:" + url + " agent:" + userAgent
 				+ " params:" + params);
@@ -58,15 +58,11 @@ public class DDWebRequest {
 			InputStream localObject1 = conn.getInputStream();
 			String str1 = StreamUtils.inputToString(localObject1);
 			Log.e("lkt", "request result : " + str1);
+			return str1;
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
-
-	public static String getBasicParams() {
-		String result = "";
-		result += "time=" + (600000L + System.currentTimeMillis());
-		result += "&signType=md5";
-		result += "&sdkVersion=" + Config.getApiver();
-		return result;
-	}
+	
 }

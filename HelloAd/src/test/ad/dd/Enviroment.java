@@ -16,11 +16,16 @@ public class Enviroment {
 	private String appPwd = "WMAQLoHHmpsmxu5x";
 	private Set<String> installedApps;
 	private Random rand = new Random();
+	private String userAgent;
+
+	private static Enviroment s;
 
 	private Enviroment() {
 		imei = getIMEI();
 		imsi = getImsi();
 		packageName = Utils.getRandomPackageName();
+
+		userAgent = DDAgent.agents[rand.nextInt(DDAgent.agents.length)];
 
 		installedApps = new HashSet<String>();
 		installedApps.add(packageName);
@@ -42,12 +47,16 @@ public class Enviroment {
 	}
 
 	public static void init() {
-		Enviroment en = new Enviroment();
-		setAppID(en.appID);
-		setAppPackageName(en.packageName);
-		setClientUUID(en.imei);
-		setImsi(en.imsi);
-		setAppPassword(en.appPwd);
+		s = new Enviroment();
+		setAppID(s.appID);
+		setAppPackageName(s.packageName);
+		setClientUUID(s.imei);
+		setImsi(s.imsi);
+		setAppPassword(s.appPwd);
+	}
+
+	public static Enviroment get() {
+		return s;
 	}
 
 	protected static void setImsi(String imsi) {
@@ -160,6 +169,14 @@ public class Enviroment {
 			}
 		}
 		return mBuffer.toString();
+	}
+
+	public String getUserAgent() {
+		return userAgent;
+	}
+
+	public Set<String> getInstalledApps() {
+		return installedApps;
 	}
 
 }

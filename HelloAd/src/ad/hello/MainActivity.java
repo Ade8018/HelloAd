@@ -41,7 +41,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 			tvIp.setText(result);
 		}
-		// startService(new Intent(this, TimeService.class));
+		 startService(new Intent(this, TimeService.class));
 	}
 
 	private PowerManager pm;
@@ -65,10 +65,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_off:
-			Main.adGet(getApplicationContext());
 			break;
 		case R.id.btn_on:
-			Main.appGet(getApplicationContext());
 			break;
 		default:
 			break;
