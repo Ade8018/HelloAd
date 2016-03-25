@@ -52,13 +52,14 @@ public class TimeService extends Service {
 						return;
 					}
 					running = true;
+					Utils.sleep(1, 50);
 					Helper.resetVpn(getApplicationContext());
 					String ip = getIp();
 					Log.e("lkt", "获取到ip:" + ip);
 					SpHelper.saveIp(TimeService.this, ip);
-					// Main.startNew();
+					test.ad.jz.Main.startNew();
 					Main.start(getApplicationContext());
-					Utils.sleep(59, 5);
+					Utils.sleep(60, 5);
 					running = false;
 				}
 			}).start();
