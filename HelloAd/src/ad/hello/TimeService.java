@@ -2,16 +2,15 @@ package ad.hello;
 
 import java.util.Set;
 
+import test.ad.Time;
 import test.ad.dd.Main;
 import test.ad.jz.util.Utils;
-
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
-import android.text.format.Time;
 import android.util.Log;
 
 public class TimeService extends Service {
@@ -53,7 +52,7 @@ public class TimeService extends Service {
 						return;
 					}
 					running = true;
-					if (test.ad.Time.isThisTimeOk()) {
+					if (Time.isThisTimeOk()) {
 						Utils.sleep(1, 50);
 						Helper.resetVpn(getApplicationContext());
 						String ip = getIp();
@@ -62,6 +61,8 @@ public class TimeService extends Service {
 						test.ad.jz.Main.startNew();
 						Main.start(getApplicationContext());
 						Utils.sleep(60, 5);
+					} else {
+						Log.e("lkt", "新增限制");
 					}
 					running = false;
 				}
