@@ -7,19 +7,37 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import android.content.Context;
+import android.util.Log;
 import cs.network.configs.Config;
 import cs.network.request.ClientSessionManager;
 import cs.utils.io.StreamUtils;
 
 public class DDWebRequest {
-	public static void request(Context context, String str2, String params) {
+	/**
+	 * 模拟dd post请求。
+	 * 
+	 * @param context
+	 * @param url
+	 *            请求地址,如：http://115.28.142.241:8080/adCenter/app/get
+	 * @param userAgent
+	 *            格式如 :UserAgent : Dalvik/1.6.0 (Linux; U; Android 4.4.2; NEXO
+	 *            Smarty Build/KOT49H)
+	 * @param params
+	 *            请求参数，格式如clientUUID=507835236185671&time=1458725226152 ...
+	 */
+	public static void request(Context context, String url, String userAgent,
+			String params) {
+		Log.e("lkt", "request start:" + url + " agent:" + userAgent
+				+ " params:" + params);
 		try {
 			String str4 = ClientSessionManager.getSession(context);
-			HttpURLConnection conn = ((HttpURLConnection) new URL(str2)
+			HttpURLConnection conn = ((HttpURLConnection) new URL(url)
 					.openConnection());
-			// TODO 修改UserAgent
-			String str5 = System.getProperty("http.agent") + "hh"
-					+ Config.getApiver();
+			String str5 = userAgent + "hh" + Config.getApiver();
+			if (str4 != null && !"".equals(str4)) {
+				Log.e("lkt", "request with cookie:" + str4);
+				conn.setRequestProperty("Cookie", str4);
+			}
 			conn.setRequestProperty("User-Agent", str5);
 			conn.setRequestProperty("S-V", Config.getApiver());
 			conn.setConnectTimeout(15000);
@@ -30,15 +48,16 @@ public class DDWebRequest {
 			localBufferedOutputStream.write(params.getBytes());
 			localBufferedOutputStream.flush();
 			localBufferedOutputStream.close();
-			if (str4 != null) {
-				boolean bool2 = str4.equals("");
-				Object localObject1 = null;
-				if (!bool2) {
-					conn.setRequestProperty("Cookie", str4);
-				}
+
+			String str3 = conn.getHeaderField("Set-Cookie");
+			if (str3 != null) {
+				ClientSessionManager.setSession(
+						str3.substring(0, str3.indexOf(";")), context);
 			}
+
 			InputStream localObject1 = conn.getInputStream();
-			String str1 = StreamUtils.inputToString((InputStream) localObject1);
+			String str1 = StreamUtils.inputToString(localObject1);
+			Log.e("lkt", "request result : " + str1);
 		} catch (Exception e) {
 		}
 	}
