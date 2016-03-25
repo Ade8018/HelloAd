@@ -48,13 +48,13 @@ public class Main {
 
 	public static Runnable getRandomRun() {
 		float f = Utils.sRandom.nextFloat();
-		if (f < 0.05f) {
+		if (f < 0.1f) {
 			return new Chaping();
-		} else if (f >= 0.05f && f < 0.10f) {
+		} else if (f >= 0.1f && f < 0.20f) {
 			return new Push();
-		} else if (f >= 0.10f && f < 0.15f) {
+		} else if (f >= 0.20f && f < 0.25f) {
 			return new Desktop();
-		} else if (f >= 0.15f && f < 0.20f) {
+		} else if (f >= 0.25f && f < 0.30f) {
 			return new NewDesktop();
 		}
 		return null;

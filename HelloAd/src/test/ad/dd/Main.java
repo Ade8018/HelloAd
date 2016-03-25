@@ -34,22 +34,19 @@ public class Main {
 		try {
 			onStart();
 			String params = appGet(context);
-			String result = DDWebRequest.request(context, URL_APP_GET,
-					Enviroment.get().getUserAgent(), params);
+			String result = DDWebRequest.request(context, URL_APP_GET, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "appGet完成");
-			if (Utils.sRandom.nextFloat() > 0.95f) {
+			if (Utils.sRandom.nextFloat() < 0.05f) {
 				Log.e("lkt", "没有继续");
 				return;
 			}
 			Utils.sleep(2, 3);
 
 			params = seoGet(context);
-			result = DDWebRequest.request(context, URL_SEO_GET, Enviroment
-					.get().getUserAgent(), params);
+			result = DDWebRequest.request(context, URL_SEO_GET, Enviroment.get().getUserAgent(), params);
 
 			params = adGet(context);
-			result = DDWebRequest.request(context, URL_AD_GET, Enviroment.get()
-					.getUserAgent(), params);
+			result = DDWebRequest.request(context, URL_AD_GET, Enviroment.get().getUserAgent(), params);
 			ad.setParams(result);
 			if (ad.empty()) {
 				Log.e("lkt", "没有获取到ad");
@@ -60,46 +57,40 @@ public class Main {
 			Utils.sleep(1, 3);
 
 			params = addOne(context, AdStatus.展示, ad.adId, ad.trackUUID);
-			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment
-					.get().getUserAgent(), params);
+			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "展示完成");
-			if (Utils.sRandom.nextFloat() > 0.4f) {
+			if (Utils.sRandom.nextFloat() < 0.6f) {
 				Log.e("lkt", "没有点击");
 				return;
 			}
 			Utils.sleep(2, 1);
 			params = addOne(context, AdStatus.点击, ad.adId, ad.trackUUID);
-			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment
-					.get().getUserAgent(), params);
+			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "点击完成");
 
 			params = seoGet(context);
-			result = DDWebRequest.request(context, URL_SEO_GET, Enviroment
-					.get().getUserAgent(), params);
+			result = DDWebRequest.request(context, URL_SEO_GET, Enviroment.get().getUserAgent(), params);
 
 			Utils.sleep(10, 30);
 
-			if (Utils.sRandom.nextFloat() > 0.6f) {
+			if (Utils.sRandom.nextFloat() < 0.4f) {
 				params = addOne(context, AdStatus.下载失败, ad.adId, ad.trackUUID);
-				result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment
-						.get().getUserAgent(), params);
+				result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 				Log.e("lkt", "下载失败");
 				return;
 			} else {
 				params = addOne(context, AdStatus.下载完成, ad.adId, ad.trackUUID);
-				result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment
-						.get().getUserAgent(), params);
+				result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 				Log.e("lkt", "下载完成");
 			}
 
-			if (Utils.sRandom.nextFloat() > 0.5f) {
+			if (Utils.sRandom.nextFloat() < 0.5f) {
 				Log.e("lkt", "没有安装");
 				return;
 			}
 			Utils.sleep(10, 10);
 			params = addOne(context, AdStatus.安装完成, ad.adId, ad.trackUUID);
-			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment
-					.get().getUserAgent(), params);
+			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "安装完成");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -143,10 +134,8 @@ public class Main {
 		return params;
 	}
 
-	private static String addOne(Context context, AdStatus adstatus, long adid,
-			String trackUUID) {
-		AddOneAppReportRequest addone = new AddOneAppReportRequest(context,
-				adstatus, adid, trackUUID, null);
+	private static String addOne(Context context, AdStatus adstatus, long adid, String trackUUID) {
+		AddOneAppReportRequest addone = new AddOneAppReportRequest(context, adstatus, adid, trackUUID, null);
 		String params = buildParams(addone, addone.getParrams());
 		Log.e("lkt", "addOne params:" + params);
 		return params;
@@ -154,8 +143,7 @@ public class Main {
 
 	private static String buildParams(Object request, Object paramMap) {
 		try {
-			Method m = AbstractRequest.class.getDeclaredMethod("buildParams",
-					Map.class);
+			Method m = AbstractRequest.class.getDeclaredMethod("buildParams", Map.class);
 			m.setAccessible(true);
 			return String.valueOf(m.invoke(request, paramMap));
 		} catch (Exception e) {
