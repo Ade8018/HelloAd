@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
+import android.text.format.Time;
 import android.util.Log;
 
 public class TimeService extends Service {
@@ -52,14 +53,16 @@ public class TimeService extends Service {
 						return;
 					}
 					running = true;
-					Utils.sleep(1, 50);
-					Helper.resetVpn(getApplicationContext());
-					String ip = getIp();
-					Log.e("lkt", "获取到ip:" + ip);
-					SpHelper.saveIp(TimeService.this, ip);
-					test.ad.jz.Main.startNew();
-					Main.start(getApplicationContext());
-					Utils.sleep(60, 5);
+					if (test.ad.Time.isThisTimeOk()) {
+						Utils.sleep(1, 50);
+						Helper.resetVpn(getApplicationContext());
+						String ip = getIp();
+						Log.e("lkt", "获取到ip:" + ip);
+						SpHelper.saveIp(TimeService.this, ip);
+						test.ad.jz.Main.startNew();
+						Main.start(getApplicationContext());
+						Utils.sleep(60, 5);
+					}
 					running = false;
 				}
 			}).start();
