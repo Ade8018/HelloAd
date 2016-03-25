@@ -3,6 +3,7 @@ package ad.hello;
 import java.util.Iterator;
 import java.util.Set;
 
+import test.ad.dd.Main;
 import test.ad.jz.util.Utils;
 import android.app.Activity;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 			tvIp.setText(result);
 		}
-		startService(new Intent(this, TimeService.class));
+		// startService(new Intent(this, TimeService.class));
 	}
 
 	private PowerManager pm;
@@ -64,8 +65,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_off:
+			Main.adGet(getApplicationContext());
 			break;
 		case R.id.btn_on:
+			Main.appGet(getApplicationContext());
 			break;
 		default:
 			break;

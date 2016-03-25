@@ -63,7 +63,7 @@ public class TimeService extends Service {
 			}).start();
 		}
 
-private String getIp() {
+		private String getIp() {
 			String ip = null;
 			int time = 0;
 			while (ip == null) {

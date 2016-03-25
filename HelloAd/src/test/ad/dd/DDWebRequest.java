@@ -61,4 +61,12 @@ public class DDWebRequest {
 		} catch (Exception e) {
 		}
 	}
+
+	public static String getBasicParams() {
+		String result = "";
+		result += "time=" + (600000L + System.currentTimeMillis());
+		result += "&signType=md5";
+		result += "&sdkVersion=" + Config.getApiver();
+		return result;
+	}
 }
