@@ -41,6 +41,7 @@ public class DDWebRequest {
 			conn.setRequestProperty("User-Agent", str5);
 			conn.setRequestProperty("S-V", Config.getApiver());
 			conn.setConnectTimeout(15000);
+			conn.setReadTimeout(5000);
 			conn.setRequestMethod("POST");
 			OutputStream localOutputStream = conn.getOutputStream();
 			BufferedOutputStream localBufferedOutputStream = new BufferedOutputStream(
