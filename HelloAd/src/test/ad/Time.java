@@ -23,10 +23,10 @@ public class Time {
 			return Utils.sRandom.nextFloat() < (0.1f * i);
 		}
 		if (h >= 9 && h <= 18) {
-			return Utils.sRandom.nextFloat() < (0.2f * i);
+			return Utils.sRandom.nextFloat() < (0.3f * i);
 		}
 		if (h > 18) {
-			return Utils.sRandom.nextFloat() < (0.3f * i);
+			return Utils.sRandom.nextFloat() < (0.4f * i);
 		}
 		return false;
 	}
