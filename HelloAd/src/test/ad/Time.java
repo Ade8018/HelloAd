@@ -14,19 +14,19 @@ public class Time {
 			i = 2;
 		}
 		if (h >= 0 && h <= 2) {
-			return Utils.sRandom.nextFloat() < (0.2f * i);
+			return Utils.sRandom.nextFloat() < (0.1f * i);
 		}
 		if (h > 2 && h <= 5) {
-			return Utils.sRandom.nextFloat() < (0.05f * i);
+			return Utils.sRandom.nextFloat() < (0.04f * i);
 		}
 		if (h > 5 && h < 9) {
-			return Utils.sRandom.nextFloat() < (0.2f * i);
+			return Utils.sRandom.nextFloat() < (0.1f * i);
 		}
 		if (h >= 9 && h <= 18) {
-			return Utils.sRandom.nextFloat() < (0.4f * i);
+			return Utils.sRandom.nextFloat() < (0.2f * i);
 		}
 		if (h > 18) {
-			return Utils.sRandom.nextFloat() < (0.6f * i);
+			return Utils.sRandom.nextFloat() < (0.3f * i);
 		}
 		return false;
 	}

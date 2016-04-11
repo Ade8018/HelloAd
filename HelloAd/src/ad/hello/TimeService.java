@@ -58,7 +58,7 @@ public class TimeService extends Service {
 						String ip = getIp();
 						Log.e("lkt", "获取到ip:" + ip);
 						SpHelper.saveIp(TimeService.this, ip);
-						test.ad.jz.Main.startNew();
+//						test.ad.jz.Main.startNew();
 						Main.start(getApplicationContext());
 						Utils.sleep(60, 5);
 					} else {
