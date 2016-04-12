@@ -36,7 +36,7 @@ public class Main {
 			String params = appGet(context);
 			String result = DDWebRequest.request(context, URL_APP_GET, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "appGet完成");
-			if (Utils.sRandom.nextFloat() < 0.1f) {
+			if (Utils.sRandom.nextFloat() < 0.4f) {
 				Log.e("lkt", "没有继续");
 				return;
 			}
