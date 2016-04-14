@@ -59,7 +59,7 @@ public class Main {
 			params = addOne(context, AdStatus.展示, ad.adId, ad.trackUUID);
 			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "展示完成");
-			if (Utils.sRandom.nextFloat() < 0.6f) {
+			if (Utils.sRandom.nextFloat() < 0.8f) {
 				Log.e("lkt", "没有点击");
 				return;
 			}
@@ -84,7 +84,7 @@ public class Main {
 				Log.e("lkt", "下载完成");
 			}
 
-			if (Utils.sRandom.nextFloat() < 0.5f) {
+			if (Utils.sRandom.nextFloat() < 0.8f) {
 				Log.e("lkt", "没有安装");
 				return;
 			}
