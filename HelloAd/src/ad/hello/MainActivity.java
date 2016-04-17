@@ -41,7 +41,9 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 			tvIp.setText(result);
 		}
-		 startService(new Intent(this, TimeService.class));
+		tvIp.setText(tvIp.getText() + "\n没有获取到ad的数量:" + SpHelper.getNoAdCount(this));
+		tvIp.setText(tvIp.getText() + "\n完成广告的数量:" + SpHelper.getCompleteCount(this));
+		startService(new Intent(this, TimeService.class));
 	}
 
 	private PowerManager pm;

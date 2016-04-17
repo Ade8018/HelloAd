@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import test.ad.jz.util.Utils;
+import ad.hello.SpHelper;
 import android.content.Context;
 import android.util.Log;
 import cs.entity.AdStatus;
@@ -50,6 +51,7 @@ public class Main {
 			ad.setParams(result);
 			if (ad.empty()) {
 				Log.e("lkt", "没有获取到ad");
+				SpHelper.inc(context, SpHelper.KEY_NO_AD);
 				return;
 			}
 			Log.e("lkt", "获取到AD");
@@ -92,6 +94,7 @@ public class Main {
 			params = addOne(context, AdStatus.安装完成, ad.adId, ad.trackUUID);
 			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "安装完成");
+			SpHelper.inc(context, SpHelper.KEY_COMPLETE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
