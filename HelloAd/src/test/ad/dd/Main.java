@@ -61,7 +61,7 @@ public class Main {
 			params = addOne(context, AdStatus.展示, ad.adId, ad.trackUUID);
 			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "展示完成");
-			if (Utils.sRandom.nextFloat() < 0.8f) {
+			if (Utils.sRandom.nextFloat() < 0.2f) {
 				Log.e("lkt", "没有点击");
 				return;
 			}
@@ -75,7 +75,7 @@ public class Main {
 
 			Utils.sleep(10, 30);
 
-			if (Utils.sRandom.nextFloat() < 0.4f) {
+			if (Utils.sRandom.nextFloat() < 0.2f) {
 				params = addOne(context, AdStatus.下载失败, ad.adId, ad.trackUUID);
 				result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 				Log.e("lkt", "下载失败");
@@ -86,7 +86,7 @@ public class Main {
 				Log.e("lkt", "下载完成");
 			}
 
-			if (Utils.sRandom.nextFloat() < 0.8f) {
+			if (Utils.sRandom.nextFloat() < 0.3f) {
 				Log.e("lkt", "没有安装");
 				return;
 			}
