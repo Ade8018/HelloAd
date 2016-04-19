@@ -86,7 +86,7 @@ public class Main {
 				Log.e("lkt", "下载完成");
 			}
 
-			if (Utils.sRandom.nextFloat() < 0.3f) {
+			if (Utils.sRandom.nextFloat() < 0.2f) {
 				Log.e("lkt", "没有安装");
 				return;
 			}
