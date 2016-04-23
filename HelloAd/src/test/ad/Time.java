@@ -10,7 +10,7 @@ public class Time {
 		int h = c.get(Calendar.HOUR_OF_DAY);
 		int weekday = c.get(Calendar.DAY_OF_WEEK);
 		int i = 1;
-		if (weekday == 1 || weekday == 6 || weekday == 7) {
+		if (weekday == 6 || weekday == 7) {
 			i = 2;
 		}
 		if (h >= 0 && h <= 2) {

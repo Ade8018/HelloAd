@@ -61,7 +61,7 @@ public class Main {
 			params = addOne(context, AdStatus.展示, ad.adId, ad.trackUUID);
 			result = DDWebRequest.request(context, URL_ADD_ONE, Enviroment.get().getUserAgent(), params);
 			Log.e("lkt", "展示完成");
-			if (Utils.sRandom.nextFloat() < 0.2f) {
+			if (Utils.sRandom.nextFloat() < 0.4f) {
 				Log.e("lkt", "没有点击");
 				return;
 			}
