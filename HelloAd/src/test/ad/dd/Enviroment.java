@@ -16,9 +16,7 @@ public class Enviroment {
 	private String imei;
 	private String imsi;
 	private String packageName;
-	private static String appIDs[] = new String[] { "23044", "25572", "23044",
-			"23044", "23044", "23044", "23044", "23044", "23044", "23044",
-			"23044", "23044", "23044", "23044", "23044" };
+	private static String appIDs[] = new String[] { "23044", "25572" };
 	private static Map<String, String> id2pwd = new HashMap<String, String>();
 	private String appID;
 	private String appPwd;
