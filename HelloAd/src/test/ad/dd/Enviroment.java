@@ -1,7 +1,9 @@
 package test.ad.dd;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -12,11 +14,18 @@ public class Enviroment {
 	private String imei;
 	private String imsi;
 	private String packageName;
-	private String appIDs[] = new String[] { "23044" };
-	private String appPwd = "WMAQLoHHmpsmxu5x";
+	private String appIDs[] = new String[] { "23044", "25572", "23044",
+			"23044", "23044", "23044", "23044", "23044", "23044", "23044",
+			"23044", "23044", "23044", "23044", "23044" };
+	private Map<String, String> id2pwd = new HashMap<String, String>();
 	private Set<String> installedApps;
 	private Random rand = new Random();
 	private String userAgent;
+
+	{
+		id2pwd.put("23044", "WMAQLoHHmpsmxu5x");
+		id2pwd.put("25572", "Y9hE83x4u5211c3a");
+	}
 
 	private static Enviroment s;
 
@@ -52,11 +61,16 @@ public class Enviroment {
 
 	public static void init() {
 		s = new Enviroment();
-		setAppID(s.getAppID());
+		String appid = s.getAppID();
+		setAppID(appid);
 		setAppPackageName(s.packageName);
 		setClientUUID(s.imei);
 		setImsi(s.imsi);
-		setAppPassword(s.appPwd);
+		setAppPassword(s.getPwdById(appid));
+	}
+
+	public String getPwdById(String appid) {
+		return id2pwd.get(appid);
 	}
 
 	public static Enviroment get() {
@@ -74,7 +88,7 @@ public class Enviroment {
 		}
 	}
 
-	protected static void setAppPassword(String appPwd) {
+	private static void setAppPassword(String appPwd) {
 		try {
 			// imsi
 			Field f = Config.class.getDeclaredField("appPassword");
@@ -85,7 +99,7 @@ public class Enviroment {
 		}
 	}
 
-	protected static void setClientUUID(String imei) {
+	private static void setClientUUID(String imei) {
 		// clientUUID
 		try {
 			Field f = Config.class.getDeclaredField("clientUUID");
@@ -96,7 +110,7 @@ public class Enviroment {
 		}
 	}
 
-	protected static void setAppPackageName(String packageName) {
+	private static void setAppPackageName(String packageName) {
 		// appPackageName
 		try {
 			Field f = Config.class.getDeclaredField("appPackageName");
@@ -107,7 +121,7 @@ public class Enviroment {
 		}
 	}
 
-	protected static void setAppID(String appID) {
+	private static void setAppID(String appID) {
 		// appID
 		try {
 			Field f = Config.class.getDeclaredField("appID");
