@@ -1,7 +1,9 @@
 package test.ad.jz.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Utils {
@@ -100,6 +102,26 @@ public class Utils {
 
 	public static String getRandomPackageNameFix() {
 		return pns[sRandom.nextInt(pns.length)];
+	}
+
+	private static Map<String, String[]> appid2pn = new HashMap<String, String[]>();
+	{
+		appid2pn.put("23044", pns);
+	}
+
+	public static String getPackageNameByAppId(String appid) {
+		if (appid == null) {
+			throw new NullPointerException();
+		}
+		String[] ps = appid2pn.get(appid);
+		if (ps == null) {
+			ps = new String[25];
+			for (int i = 0; i < ps.length; i++) {
+				ps[i] = getRandomPackageName();
+			}
+			appid2pn.put(appid, ps);
+		}
+		return ps[sRandom.nextInt(ps.length)];
 	}
 
 	public static String getRandomPackageName() {

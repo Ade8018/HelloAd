@@ -23,7 +23,7 @@ public class Enviroment {
 	private Enviroment() {
 		imei = getIMEI();
 		imsi = getImsi();
-		packageName = Utils.getRandomPackageName();
+		packageName = Utils.getRandomPackageNameFix();
 
 		userAgent = DDAgent.agents[rand.nextInt(DDAgent.agents.length)];
 
