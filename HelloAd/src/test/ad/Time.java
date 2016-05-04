@@ -13,20 +13,20 @@ public class Time {
 		if (weekday == 6 || weekday == 7) {
 			i = 2;
 		}
-		if (h >= 0 && h <= 2) {
-			return Utils.sRandom.nextFloat() < (0.2f * i);
+		if (h >= 0 && h <= 1) {
+			return Utils.sRandom.nextFloat() < (0.25f * i);
 		}
-		if (h > 2 && h <= 5) {
+		if (h > 1 && h <= 5) {
 			return Utils.sRandom.nextFloat() < (0.1f * i);
 		}
 		if (h > 5 && h < 9) {
-			return Utils.sRandom.nextFloat() < (0.2f * i);
+			return Utils.sRandom.nextFloat() < (0.25f * i);
 		}
 		if (h >= 9 && h <= 18) {
 			return Utils.sRandom.nextFloat() < (0.4f * i);
 		}
 		if (h > 18) {
-			return Utils.sRandom.nextFloat() < (0.45f * i);
+			return Utils.sRandom.nextFloat() < (0.5f * i);
 		}
 		return false;
 	}
