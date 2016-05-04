@@ -17,7 +17,7 @@ public class Time {
 			return Utils.sRandom.nextFloat() < (0.25f * i);
 		}
 		if (h > 1 && h <= 5) {
-			return Utils.sRandom.nextFloat() < (0.1f * i);
+			return Utils.sRandom.nextFloat() < (0.05f * i);
 		}
 		if (h > 5 && h < 9) {
 			return Utils.sRandom.nextFloat() < (0.25f * i);
