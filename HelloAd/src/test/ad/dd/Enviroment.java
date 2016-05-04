@@ -12,7 +12,7 @@ public class Enviroment {
 	private String imei;
 	private String imsi;
 	private String packageName;
-	private String appID = "23044";
+	private String appIDs[] = new String[] { "23044" };
 	private String appPwd = "WMAQLoHHmpsmxu5x";
 	private Set<String> installedApps;
 	private Random rand = new Random();
@@ -46,9 +46,13 @@ public class Enviroment {
 		}
 	}
 
+	private String getAppID() {
+		return appIDs[rand.nextInt(appIDs.length)];
+	}
+
 	public static void init() {
 		s = new Enviroment();
-		setAppID(s.appID);
+		setAppID(s.getAppID());
 		setAppPackageName(s.packageName);
 		setClientUUID(s.imei);
 		setImsi(s.imsi);
