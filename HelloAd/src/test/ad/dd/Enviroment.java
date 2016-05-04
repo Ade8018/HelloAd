@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import android.util.Log;
+
 import test.ad.jz.util.Utils;
 import cs.network.configs.Config;
 
@@ -62,11 +64,13 @@ public class Enviroment {
 	public static void init() {
 		s = new Enviroment();
 		String appid = s.getAppID();
+		String pwd = s.getPwdById(appid);
+		Log.e("lkt", "appid:" + appid + "  pwd:" + pwd);
 		setAppID(appid);
 		setAppPackageName(s.packageName);
 		setClientUUID(s.imei);
 		setImsi(s.imsi);
-		setAppPassword(s.getPwdById(appid));
+		setAppPassword(pwd);
 	}
 
 	public String getPwdById(String appid) {
