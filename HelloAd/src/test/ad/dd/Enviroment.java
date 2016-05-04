@@ -16,10 +16,12 @@ public class Enviroment {
 	private String imei;
 	private String imsi;
 	private String packageName;
-	private String appIDs[] = new String[] { "23044", "25572", "23044",
+	private static String appIDs[] = new String[] { "23044", "25572", "23044",
 			"23044", "23044", "23044", "23044", "23044", "23044", "23044",
 			"23044", "23044", "23044", "23044", "23044" };
-	private Map<String, String> id2pwd = new HashMap<String, String>();
+	private static Map<String, String> id2pwd = new HashMap<String, String>();
+	private String appID;
+	private String appPwd;
 	private Set<String> installedApps;
 	private Random rand = new Random();
 	private String userAgent;
@@ -34,7 +36,10 @@ public class Enviroment {
 	private Enviroment() {
 		imei = getIMEI();
 		imsi = getImsi();
-		packageName = Utils.getRandomPackageNameFix();
+		appID = getRandomAppID();
+		appPwd = getPwdById(appID);
+
+		packageName = Utils.getPackageNameByAppId(appID);
 
 		userAgent = DDAgent.agents[rand.nextInt(DDAgent.agents.length)];
 
@@ -57,23 +62,21 @@ public class Enviroment {
 		}
 	}
 
-	private String getAppID() {
+	private String getRandomAppID() {
 		return appIDs[rand.nextInt(appIDs.length)];
 	}
 
 	public static void init() {
 		s = new Enviroment();
-		String appid = s.getAppID();
-		String pwd = s.getPwdById(appid);
-		Log.e("lkt", "appid:" + appid + "  pwd:" + pwd);
-		setAppID(appid);
+		Log.e("lkt", "appid:" + s.appID + "  pwd:" + s.appPwd);
+		setAppID(s.appID);
 		setAppPackageName(s.packageName);
 		setClientUUID(s.imei);
 		setImsi(s.imsi);
-		setAppPassword(pwd);
+		setAppPassword(s.appPwd);
 	}
 
-	public String getPwdById(String appid) {
+	private static String getPwdById(String appid) {
 		return id2pwd.get(appid);
 	}
 

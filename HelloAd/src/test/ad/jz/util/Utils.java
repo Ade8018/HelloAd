@@ -106,7 +106,7 @@ public class Utils {
 
 	private static Map<String, String[]> appid2pn = new HashMap<String, String[]>();
 	{
-		appid2pn.put("23044", pns);
+//		appid2pn.put("23044", pns);
 	}
 
 	public static String getPackageNameByAppId(String appid) {
