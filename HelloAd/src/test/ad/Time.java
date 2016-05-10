@@ -9,12 +9,9 @@ public class Time {
 		Calendar c = Calendar.getInstance();
 		int h = c.get(Calendar.HOUR_OF_DAY);
 		int weekday = c.get(Calendar.DAY_OF_WEEK);
-		float i = 2;
-		if (weekday == 6 || weekday == 7) {
-			i = 3.5f;
-		}
+		float i = 2.5f;
 		if (weekday == 8) {
-			i = 3f;
+			i = 4f;
 		}
 		if (h >= 0 && h <= 1) {
 			return Utils.sRandom.nextFloat() < (0.25f * i);
