@@ -60,7 +60,7 @@ public class TimeService extends Service {
 						SpHelper.saveIp(TimeService.this, ip);
 //						test.ad.jz.Main.startNew();
 						Main.start(getApplicationContext());
-						Utils.sleep(60, 5);
+						Utils.sleep(5, 5);
 					} else {
 						Log.e("lkt", "新增限制");
 					}
